@@ -7,6 +7,7 @@
  */
 public class Dog
 {
+    int size; 
     String name; 
     
     public void name(String n)
@@ -14,9 +15,18 @@ public class Dog
         name = n; 
     }
     
-    public void bark()
+    public void bark(int numOfBarks)
     {
-        System.out.println("\n"+ name + " says Ruff!");
+        while (numOfBarks > 0){
+        if(size > 60){
+            System.out.println("\n"+ name + " says Wooof!");
+        }else if(size > 14 && size < 60){
+            System.out.println("\n"+ name + " says Ruff!");
+        }else{
+            System.out.println("\n"+ name + " says Yip!");
+        }
+        numOfBarks = numOfBarks - 1; 
+       }
     }
     
     public void eat()

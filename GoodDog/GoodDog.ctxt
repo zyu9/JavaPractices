@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=GoodDog
+comment0.text=\r\n\ Encapsulation\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (8/5/2020)\r\n
+comment1.params=
+comment1.target=int\ getSize()
+comment1.text=\r\n\ Make\ the\ getter\ and\ setter\ methods\ public\r\n
+comment2.params=s
+comment2.target=void\ setSize(int)
+comment3.params=
+comment3.target=void\ bark()
+numComments=4
