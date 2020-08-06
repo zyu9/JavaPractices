@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=EncapTest
+comment0.text=\r\n\ From\ https\://www.tutorialspoint.com/java/java_encapsulation.htm\r\n\ Four\ fundamental\ OOP\ concepts\:\ Encapsulation,\ inheritance,\ \r\n\ polymorphism,\ and\ abstraction.\ \r\n\ \r\n\ wrapping\ variables\ and\ methods\ together\ as\ a\ single\ unit.\r\n\r\nIn\ encapsulation,\ the\ variables\ of\ a\ class\ will\ be\ hidden\ from\ \r\n\ other\ classes,\ and\ can\ be\ accessed\ only\ through\ the\ methods\ of\ \r\n\ their\ current\ class.\ (data\ hiding)\r\n\r\n\ @author\ (zyu9)\r\n\ @version\ (8/5/2020)\r\n
+comment1.params=
+comment1.target=int\ getAge()
+comment1.text=\r\n\ getters\ and\ setters\ \=>\ accessing\ points\r\n\ any\ class\ that\ wants\ to\ access\ the\ variables\ should\ access\ \r\n\ them\ through\ these\ getters\ and\ setters\r\n
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment3.params=
+comment3.target=java.lang.String\ getIdNum()
+comment4.params=newAge
+comment4.target=void\ setAge(int)
+comment5.params=newName
+comment5.target=void\ setName(java.lang.String)
+comment6.params=newId
+comment6.target=void\ setIdNum(java.lang.String)
+numComments=7

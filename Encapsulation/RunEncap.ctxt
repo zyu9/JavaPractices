@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=RunEncap
+comment0.text=\r\n\ Benefits\ of\ Encapsulation\:\ \r\n\ -The\ fields\ of\ a\ class\ can\ be\ made\ read-only\ or\ write-only.\r\n\ -A\ class\ can\ have\ total\ control\ over\ what\ is\ stored\ in\ its\ \r\n\ \ \ fields.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+numComments=2
