@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=DotCom
+comment0.text=\r\n\ Using\ the\ ArrayList\r\n\r\n\ @author\ (zyu9)\r\n\ @version\ (8/7/2020)\r\n
+comment1.params=locs
+comment1.target=void\ setLocationCells(java.util.ArrayList)
+comment2.params=n
+comment2.target=void\ setName(java.lang.String)
+comment3.params=userInput
+comment3.target=java.lang.String\ checkYourself(java.lang.String)
+numComments=4

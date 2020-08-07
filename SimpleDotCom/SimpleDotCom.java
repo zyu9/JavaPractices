@@ -20,9 +20,9 @@ public class SimpleDotCom
         for(int cell : locationCells){
             if(guess == cell){
                 result = "hit"; 
-                numOfHits++;
-                break; 
+                numOfHits++;               
             }
+            break; 
         } //out of the loop
         
         if(numOfHits == locationCells.length){
