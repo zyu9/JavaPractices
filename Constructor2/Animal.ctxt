@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Animal
+comment0.text=\r\n\ Abstract\ class\ Animal\ -\ write\ a\ description\ of\ the\ class\ here\r\n\r\n\ @author\ (your\ name\ here)\r\n\ @version\ (8/13/2020)\r\n
+comment1.params=
+comment1.target=java.lang.String\ getName()
+comment2.params=theName
+comment2.target=Animal(java.lang.String)
+numComments=3
