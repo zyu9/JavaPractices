@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=SimpleGui1B
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ SimpleGui1B\ here.\r\n\r\n\ @author\ (zyu9)\r\n\ @version\ (8/20/2020)\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=void\ go()
+comment3.params=event
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=4
