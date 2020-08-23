@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=MiniMusicPlayer2
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ MiniMusicPlayer2\ here.\r\n\r\n\ @author\ (zyu9)\r\n\ @version\ (8/23/2020)\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=void\ go()
+comment3.params=event
+comment3.target=void\ controlChange(javax.sound.midi.ShortMessage)
+comment4.params=comd\ chan\ one\ two\ tick
+comment4.target=javax.sound.midi.MidiEvent\ makeEvent(int,\ int,\ int,\ int,\ int)
+numComments=5
