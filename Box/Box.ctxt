@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Box
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Box\ here.\r\n\r\n\ @author\ (zyu9)\r\n\ @version\ (8/27/2020)\r\n
+comment1.params=w
+comment1.target=void\ setWidth(int)
+comment2.params=h
+comment2.target=void\ setHeight(int)
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4
