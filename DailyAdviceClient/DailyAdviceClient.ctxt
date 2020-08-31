@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=DailyAdviceClient
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ DailyAdviceClient\ here.\r\n\r\n\ @author\ (zyu9)\r\n\ @version\ (8/31/2020)\r\n
+comment1.params=
+comment1.target=void\ go()
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+numComments=3

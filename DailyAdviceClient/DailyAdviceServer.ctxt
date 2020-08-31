@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=DailyAdviceServer
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ DailyAdviceServer\ here.\r\n\r\n\ @author\ (zyu9)\r\n\ @version\ (8/31/2020)\r\n
+comment1.params=
+comment1.target=void\ go()
+comment2.params=
+comment2.target=java.lang.String\ getAdvice()
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4
