@@ -134,5 +134,152 @@ public class BeatBoxFinal
       }catch(Exception e){e.printStackTrace();}
   }//close method
   
+  public void buildTrackAndStart(){
+      ArrayList<Integer> trackList = null;
+      sequence.deleteTrack(track);
+      track = sequence.createTrack();
+      
+      for(int i = 0; i < 16; i++){
+          trackList = new ArrayList<Integer>();
+          for(int j = 0; j < 16; j++){
+              JCheckBox jc = (JCheckBox) checkboxList.get(j + (16*i));
+              if(jc.isSelected()){
+                  int key = instruments[i];
+                  trackList.add(new Integer(key));
+              }else{
+                  trackList.add(null);
+              }
+          }//close inner loop
+          makeTracks(trackList);
+      }//close outer loop
+      track.add(makeEvent(192,9,1,0,15));
+      try{
+          sequencer.setSequence(sequence);
+          sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY);
+          sequencer.start();
+          sequencer.setTempoInBPM(120);
+      }catch(Exception e){e.printStackTrace();}
+  }//close method
   
+  public class MyStartListener implements ActionListener{
+      public void actionPerformed(ActionEvent a){
+          buildTrackAndStart(); 
+      }
+  }//close inner class
+  
+  public class MyStopListener implements ActionListener{
+      public void actionPerformed(ActionEvent a){
+          sequencer.stop(); 
+      }
+  }//close inner class
+  
+  public class MyUpTempoListener implements ActionListener{
+      public void actionPerformed(ActionEvent a){
+          float tempoFactor = sequencer.getTempoFactor();
+          sequencer.setTempoFactor((float)(tempoFactor * 1.03)); 
+      }
+  }//close inner class
+  
+  public class MyDownTempoListener implements ActionListener{
+      public void actionPerformed(ActionEvent a){
+          float tempoFactor = sequencer.getTempoFactor();
+          sequencer.setTempoFactor((float)(tempoFactor * 0.97)); 
+      }
+  }//close inner class
+  
+  public class MySendListener implements ActionListener{
+      public void actionPerformed(ActionEvent a){
+          //make an arraylist of just the STATE of the checkboxes
+          boolean[] checkboxState = new boolean[256];
+          for(int i = 0; i < 256; i++){
+              JCheckBox check = (JCheckBox) checkboxList.get(i);
+              if(check.isSelected()){
+                  checkboxState[i] = true; 
+              }
+          }
+          String messageToSend = null;
+          try{
+              out.writeObject(userName + nextNum++ + ": " + userMessage.getText());
+              out.writeObject(checkboxState);
+          }catch(Exception ex){
+              System.out.println("Sorry dude. Could not send it to the server.");
+          }
+          userMessage.setText("");
+      }//close method
+  }//close inner class
+  
+  public class MyListSelectionListener implements ListSelectionListener{
+      public void valueChanged(ListSelectionEvent le){
+          if(!le.getValueIsAdjusting()){
+              String selected = (String) incomingList.getSelectedValue();
+              if(selected != null){
+                  //now go to the map, and change the sequence
+                  boolean[] selectedState = (boolean[]) otherSeqsMap.get(selected);
+                  changeSequence(selectedState);
+                  sequencer.stop();
+                  buildTrackAndStart();
+              }
+          }
+      }
+  }
+  
+  public class RemoteReader implements Runnable{
+      boolean[] checkboxState = null;
+      String nameToShow = null;
+      Object obj = null;
+      public void run(){
+          try{
+              while((obj = in.readObject()) != null){
+                  System.out.println("got an object from server");
+                  System.out.println(obj.getClass());
+                  String nameToShow = (String) obj;
+                  checkboxState = (boolean[]) in.readObject();
+                  otherSeqsMap.put(nameToShow,checkboxState);
+                  listVector.add(nameToShow);
+                  incomingList.setListData(listVector);
+              }
+          }catch(Exception ex){ex.printStackTrace();}
+      }
+  }//close inner class
+  
+  public class MyPlayMineListener implements ActionListener{
+      public void actionPerformed(ActionEvent a){
+          if(mySequence != null){
+              sequence = mySequence; 
+          }
+      }
+  }//close inner class
+  
+  public void changeSequence(boolean[] checkboxState){
+      for(int i = 0; i < 256; i++){
+          JCheckBox check = (JCheckBox) checkboxList.get(i);
+          if(checkboxState[i]){
+              check.setSelected(true);
+          }else{
+              check.setSelected(false);
+          }
+      }
+  }//close changeSequence
+  
+  public void makeTracks(ArrayList list){
+      Iterator it = list.iterator();
+      for(int i = 0; i < 16; i++){
+          Integer num = (Integer) it.next();
+          if(num != null){
+              int numKey = num.intValue();
+              track.add(makeEvent(144,9,numKey,100,i));
+              track.add(makeEvent(128,9,numKey,100,i+1));
+          }
+      }
+  }//close makeTracks()
+  
+  public MidiEvent makeEvent(int comd, int chan, int one, int two, int tick){
+      MidiEvent event = null;
+      try{
+          ShortMessage a = new ShortMessage();
+          a.setMessage(comd, chan, one, two);
+          event = new MidiEvent(a,tick);
+      }catch(Exception e){e.printStackTrace();}
+      return event; 
+  }//close makeEvent
 }
