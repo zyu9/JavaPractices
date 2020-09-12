@@ -91,10 +91,10 @@ public class BeatBoxFinal
       
       incomingList = new JList();
       incomingList.addListSelectionListener(new MyListSelectionListener());
-      incomingList.setSelectionMods(ListSelectionModel.SINGLE_SELECTION);
+      incomingList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
       JScrollPane theList = new JScrollPane(incomingList);
       buttonBox.add(theList);
-      incomingList.setListDate(listVector);
+      incomingList.setListData(listVector);
       
       Box nameBox = new Box(BoxLayout.Y_AXIS);
       for(int i = 0; i < 16; i++){
