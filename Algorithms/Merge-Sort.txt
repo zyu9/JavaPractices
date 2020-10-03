@@ -1,0 +1,78 @@
+//pseudocode
+Merge(A,p,q,r)
+n1 ← q - p + 1
+n2 ← r - q
+create arrays L[1..n1+1] and R[1..n2+1]
+for i ← 1 to n1
+    do L[i] ← A[p+i-1]
+for j ← 1 to n2
+    do R[j] ← A[q + j]
+L[n1 + 1] ← infinite
+R[n2 + 1] ← infinite
+i ← 1
+j ← 1
+for k ← p to r
+    do if L[i] <= R[j]
+        then A[k] ← L[i]
+           i ← i + 1
+        else A[k] ← R[j]
+           j ← j + 1
+
+Merge-Sort(A,p,r)
+if p < r
+    then q ← (p+r)/2
+        Merge-Sort(A,p,q)
+        Merge-Sort(A,q+1,r)
+        Merge(A,p,q,r)
+
+//Time complexity: O(nLog(n)) in all 3 cases
+//java code(a little different)
+void merge(int arr[], int left, int mid, int right){
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    int L[] = new int[n1];
+    int R[] = new int[n2];
+
+    for(int i = 0; i < n1; ++i){
+        L[i] = arr[left+i];
+    }
+    for(int j = 0; j < n2; ++j){
+        R[j] = arr[mid+1+j];
+    }
+
+    int i = 0, j = 0;
+    int k = left;
+    while(i < n1 && j < n2){
+        if(L[i] <= R[j]){
+           arr[k] = L[i];
+           i++;
+        }else{
+           arr[k] = R[j];
+           j++;
+        }
+        k++;
+    }
+
+    while(i < n1){
+      arr[k] = L[i];
+      i++;
+      k++;
+    }
+
+    while(j < n2){
+      arr[k] = R[j];
+      j++;
+      k++;
+    }
+
+}
+
+void mergeSort(int arr[], int left, int right){
+    if(left < right){
+      int mid = (left + right) /2;
+      mergeSort(arr, left, mid);
+      mergeSort(arr, mid+1, right);
+      merge(arr, left, mid, right);
+    }
+}

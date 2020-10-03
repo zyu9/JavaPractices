@@ -1,0 +1,44 @@
+//pseudocode-take last element as pivot
+QUICKSORT(A, p, r)
+if p < r
+    then q ← PARTITION(A,p,r)
+        QUICKSORT(A, p, q-1)
+        QUICKSORT(A, q+1, r)
+
+PARTITION(A,p,r)
+x ← A[r]
+i ← p-1
+for j ← p to r -1
+    do if A[j] <= x
+        then i ← i + 1
+            exchange A[i] ↔ A[j]
+   exchange A[i+1] ↔ A[r]
+   return i + 1
+
+//Worst Case: O(n^2) | Best&Average Case: O(nlog(n))
+//java
+int partition(int arr[], int low, int high){
+    int pivot = arr[high];
+    int i = (low -1);
+    for(int j = low; j < high; j++){
+        if(arr[j] < pivot){
+            i++;
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    int temp = arr[i+1];
+    arr[i+1] = arr[high];
+    arr[high] = temp;
+
+    return i+1;
+}
+
+void quickSort(int arr[], int low, int high){
+    if(low < high){
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi-1);
+        quickSort(arr, pi+1, high);
+    }
+}

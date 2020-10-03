@@ -1,0 +1,68 @@
+//pseudocode
+PARENT(i)
+    return 1/2
+LEFT(i)
+    return 2i
+RIGHT(i)
+    return 2i + 1
+
+MAX-HEAPIFY(A,i)
+l ← LEFT(i)
+r ← RIGHT(i)
+if l <= heap-size[A] and A[l] > A[i]
+    then largest ← l
+    else largest ← i
+if r <= heap-size[A] and A[r] > A[largest]
+    then largest ← r
+if largest != i
+    then exchange A[i] ↔ A[largest]
+        MAX-HEAPIFY(A,largest)
+
+BUILD-MAX-HEAP(A)
+heap-size[A] ← length[A]
+for i ← length[A]/2 downto 1
+    do MAX-HEAPIFY(A,i)
+
+HEAPSORT(A)                //O(nlog(n))
+BUILD-MAX-HEAP(A)          //O(n)
+for i ← length[A] downto 2
+    do exchange A[1] ↔ A[i]
+        heap-size[A] ← heap-size[A] -1
+        MAX-HEAPIFY(A,1)   //O(log(n))
+
+//java
+void heapify(int arr[], int size, int root){
+   int largest = root;
+   int l = 2*root +1;
+   int r = 2*root +2;
+
+   if(l < size && arr[l] > arr[largest]){
+        largest = l;
+   }
+   if(r < size && arr[r] > arr[largest]){
+        largest = r;
+   }
+   if(largest != root){
+        int temp = arr[root];
+        arr[root] = arr[largest];
+        arr[largest] = temp;
+
+        heapify(arr, size, largest);
+   }
+}
+
+void heapSort(int arr[]){
+   int n = arr.length;
+
+   for(int i = n /2 - 1; i >= 0; i--){
+        heapify(arr, n, i);
+   }
+
+   for(int i = n-1; i > 0; i--){
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        heapify(arr, i, 0);
+   }
+}

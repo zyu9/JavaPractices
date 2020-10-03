@@ -1,0 +1,63 @@
+//pseudocode
+COUNTING-SORT(A, B, k)
+for i ← 0 to k
+    do C[i] ← 0
+for j ← 1 to length[A]
+    do C[A[j]] ← C[A[j]] + 1
+//C[i] now contains the number of elements equal to i.
+for i ← 1 to k
+    do C[i] ← C[i] + C[i - 1]
+//C[i] now contains the number of elements less than or equal to i.
+for j ← length[A] downto 1
+    do B[C[A[j]]] ← A[j]
+        C[A[j]] ← C[A[j]] - 1
+
+//O(n+k) n: number of elements in input array | k: the range of input
+void countingSort(char arr[]){
+  int n = arr.length;
+
+  char output[] = new char[n];
+
+  int count[] = new int[256];
+  for(int i = 0; i < 256; ++i)
+    count[i] = 0;
+  
+  for(int i = 0; i < n; ++i)
+    ++count[arr[i]];
+
+  for(int i = 1; i < 255; ++i)
+    count[i] += count[i-1];
+  
+  for(int i = n -1; i >= 0; i--){
+     output[count[arr[i]] -1] = arr[i];
+     --count[arr[i]];
+  }
+
+  for(int i = 0; i < n; ++i)
+    arr[i] = output[i]; 
+
+}
+
+void countSort(int[] arr){
+   int max = Arrays.stream(arr).max().getAsInt(); 
+   int min = Arrays.stream(arr).max().getAsInt();
+   int range = max-min+1;
+   int count[] = new int[range];
+   int ouput[] = new int[arr.length];
+   for (int i = 0; i < arr.length; i++){ 
+            count[arr[i] - min]++; 
+   } 
+  
+   for (int i = 1; i < count.length; i++){ 
+            count[i] += count[i - 1]; 
+   } 
+  
+   for (int i = arr.length - 1; i >= 0; i--){ 
+            output[count[arr[i] - min] - 1] = arr[i]; 
+            count[arr[i] - min]--; 
+   } 
+  
+   for (int i = 0; i < arr.length; i++){ 
+            arr[i] = output[i]; 
+   } 
+}
