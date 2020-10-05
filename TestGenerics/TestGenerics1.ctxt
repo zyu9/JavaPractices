@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=TestGenerics1
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ TestGenerics1\ here.\r\n\r\n\ @author\ (zyu9)\r\n\ @version\ (10/4/2020)\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=void\ go()
+numComments=3
