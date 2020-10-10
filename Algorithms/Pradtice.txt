@@ -1,4 +1,5 @@
 //Merge Sort: O(nlogn)
-//Quick Sort: O(n^2) O(nlogn)
+//Quick Sort: worst O(n^2) Best/Average O(nlogn)
 //Heap Sort: O(nlogn)
 //Insertion sort: best O(n) Average/Worst O(n^2)
+//Bubble Sort: Worst/Average O(n^n); Best O(n)
